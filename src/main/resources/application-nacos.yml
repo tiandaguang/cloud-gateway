@@ -8,7 +8,18 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+        locator:
+          enabled: true
     gateway:
+      globalcors: # 跨域配置
+        cors-configurations:
+          '[/**]':
+            allow-credentials: true #允许携带认证信息Cookie
+            # 我们可以通 过域名的方式 也可以通过指定ip  还可以 allowed-origins: "*"  #放行所有跨域请求
+            allowed-origins: "*"
+            allowed-headers: "*"   #允许所有请求头
+            allowed-methods: "*"   #允许所有请求方式
+            max-age: 86400  # 86400 秒，也就是 24 小时 在有效时间内，浏览器无须为同一请求再次发起预检请求，可以减少发送请求的次数，减少系统部分压力。
       routes: # 路由数组[路由 就是指定当请求满足什么条件的时候转到哪个微服务]
         - id: consumer_route # 当前路由的标识, 要求唯一
           uri: lb://cloud-consumer # 请求要转发到的地址
@@ -17,11 +28,25 @@ spring:
               - Path=/consumer_route/** # 当请求路径满足Path指定的规则时,才进行路由转发
           filters: # 过滤器,请求在传递过程中可以通过过滤器对其进行一定的修改
               - StripPrefix=1 # 转发之前去掉1层路径
-              - name: RequestRateLimiter
-                args:
-                  redis-rate-limiter.replenishRate: 1
-                  redis-rate-limiter.burstCapacity: 5
-                  key-resolver: '#{@ipKeyResolver}'
+#              - name: RequestRateLimiter
+#                args:
+#                  redis-rate-limiter.replenishRate: 1
+#                  redis-rate-limiter.burstCapacity: 5
+#                  key-resolver: '#{@ipKeyResolver}'
+    sentinel:
+      transport:
+        dashboard: localhost:8888
+        log:
+          dir: ${logging.file.path}/sentinel/
+      eager: true
+#      datasource:
+#        ds:
+#          nacos:
+#            server-addr: localhost:8848
+#            data-id: ${spring.application.name}-flow-rules
+#            group-id: SENTINEL_GROUP
+#            rule-type: flow
+
   redis:
     host: 172.17.15.77
     port: 6379
