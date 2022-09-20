@@ -37,7 +37,7 @@ spring:
       transport:
         dashboard: localhost:8888
         log:
-          dir: ${logging.file.path}/sentinel/
+          dir: d:/sentinel/
       eager: true
 #      datasource:
 #        ds:
