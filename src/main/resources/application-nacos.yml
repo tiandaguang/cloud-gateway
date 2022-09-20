@@ -1,5 +1,4 @@
-server:
-  port: 8050
+
 
 spring:
   application:
@@ -50,3 +49,9 @@ spring:
   redis:
     host: 172.17.15.77
     port: 6379
+#暴露所有端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
