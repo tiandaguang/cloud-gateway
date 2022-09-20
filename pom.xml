@@ -74,17 +74,23 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
             <version>2.2.0.RELEASE</version>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
-            <version>2.2.0.RELEASE</version>
-        </dependency>
-        <!-- 限流器 -->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>-->
+<!--            <version>2.2.0.RELEASE</version>-->
+<!--        </dependency>-->
+        <!-- 限流器
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-            <version>2.2.0.RELEASE</version>
+            <version>2.2.8.RELEASE</version>
         </dependency>
+ -->
+<!--        <dependency>-->
+<!--           <groupId>com.alibaba.csp</groupId>-->
+<!--            <artifactId>sentinel-dashboard</artifactId>-->
+<!--            <version>1.8.2</version>-->
+<!--        </dependency>-->
 <!--        <dependency>-->
 <!--            <groupId>com.alibaba.csp</groupId>-->
 <!--            <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>-->
